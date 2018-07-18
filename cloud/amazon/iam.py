@@ -252,7 +252,7 @@ def delete_user(module, iam, name):
             login_profile = iam.get_login_profiles(name).get_login_profile_response
         except boto.exception.BotoServerError as err:
             error_msg = boto_exception(err)
-            if ('Cannot find Login Profile') in error_msg:
+            if ('Login Profile') in error_msg:
                del_meta = iam.delete_user(name).delete_user_response
         else:
           iam.delete_login_profile(name)
